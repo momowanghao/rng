@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            position: relative;
+            background:#000;
+            position:relative;
+        }
+        body>img{
+            width:900px;
+            height:50px;
+            position:absolute;
+            left:50%;
+            margin:0px 0px 0px -500px;
+        }
+        div.content{
+            width:1000px;
+            height:600px;
+            position: absolute;
+            top:100px;
+            left:50%;
+            margin:0px 0px 0px -500px;
+        }
+        div.content>ul{
+            position:absolute;
+            top:20px;
+            left:10px;
+            
+        }
+        div.content>ul>li{
+            list-style:none;
+            float:left;
+            border-bottom:2px solid #ccc;
+            margin:0px 0px 0px 15px;
+            cursor: pointer;
+        }
+        div.content>ul>li>a{
+            text-decoration:none;
+            font-size:20px;
+            color:#e8bc29;
+        }
+        div.photo>div#d1,div.photo>div#d2,div.photo>div#d3,div.photo>div#d4{
+            width:1000px;
+            height:510px;
+            position: absolute;
+            top:80px;
+            background:#000;
+        }
+        div.photo>div>img{
+            width:550px;
+            height:320px;
+            border:1px solid #e8bc29;
+            margin:90px 0px 0px 20px;
+        }
+        div.photo>div#d1>div,div.photo>div#d2>div,div.photo>div#d3>div,div.photo>div#d4>div{
+            width:300px;
+            height:300px;
+            position:absolute;
+            top:90px;
+            left:600px;
+            margin:12px 0px 0px 30px;
+        }
+        div.photo>div#d1>div>h3,div.photo>div#d2>div>h3,div.photo>div#d3>div>h3,div.photo>div#d4>div>h3{
+            color:#e0b114;
+            position:absolute;
+            margin:20px 0px 0px 80px;
+        }
+        div.photo>div#d1>div>span,div.photo>div#d2>div>span,div.photo>div#d3>div>span,div.photo>div#d4>div>span{
+            color:#e0b114;
+            position:absolute;
+            margin:60px 0px 0px 8px;
+        }
+        div.in{
+            z-index:100;
+        }
+        div.content>ul>li.po{
+            border-bottom-color:#b18c14;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/logo/sign.png" alt="">
+    <div class="content" >
+        <ul class="number">
+            <li class="po" data-index="0"><a href="part1.html">英雄联盟分部</a></li>
+            <li data-index="1"><a href="part2.html">绝地求生分部</a></li>
+            <li data-index="2"><a href="part3.html">王者荣耀分部</a></li>
+            <li data-index="3"><a href="part4.html">QQ飞车分部</a></li>
+        </ul>
+        <div class="photo">
+            <div id="d1" class="in">
+                <img src="img/star/lol/star.jpg" alt="">
+                <div>
+                    <h3>英雄联盟分部</h3>
+                    <span>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos fugiat exercitationem temporibus quasi distinctio repudiandae rerum saepe sapiente maxime error, laborum molestiae, ab expedita cupiditate ullam ut tenetur recusandae at.
+                    </span>
+                </div>
+            </div>
+            <div id="d2">
+                <img src="img/star/pubg/star.jpg" alt="">
+                <div>
+                    <h3>绝地求生分部</h3>
+                    <span>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit iste maiores quia, vero tempore et, eius accusamus vitae, quibusdam harum facilis! Blanditiis iure libero reiciendis velit sapiente, harum deserunt nemo?
+                    </span>
+                </div>
+            </div>
+            <div id="d3">
+                <img src="../img/star/kpl/star.jpg" alt="">
+                <div>
+                    <h3>王者荣耀分部</h3>
+                    <span>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae fuga nemo temporibus voluptate accusamus quae laborum officia perferendis beatae in, ipsa quibusdam iure cum deleniti exercitationem assumenda similique explicabo distinctio.
+                    </span>
+                </div>
+            </div>
+            <div id="d4">
+                <img src="img/star/qq/star.jpg" alt="">
+                <div>
+                    <h3>QQ飞车分部</h3>
+                    <span>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex eos suscipit sint, illum veniam placeat maiores harum. Tempore commodi quod provident nihil obcaecati sint nostrum veritatis aperiam, suscipit ad eius!
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var number=document.getElementsByClassName("number")[0]
+                           .children;
+        var photo=document.getElementsByClassName("photo")[0]
+                          .children;
+        var item=0;
+        var time=0;
+        var clearActive=function(){
+            for(var i=0;i<photo.length;i++){
+                number[i].className="";
+                photo[i].className="";
+            }
+        }
+        var goIndex=function(){
+            clearActive();
+            number[item].className="po";
+            photo[item].className="in";
+            }
+        var gon=function(){
+                if(item<photo.length-1){
+                item++;
+            }else{
+                item=0;
+            }
+            goIndex();
+        }
+        for(var i=0;i<photo.length;i++){
+            number[i].addEventListener("click",function(){
+            var numberIndex=this.getAttribute("data-index");
+            item=numberIndex;
+            goIndex();
+            // clearInterval(n);
+            })
+        };
+        setInterval(function(){
+            time++;
+            if(time==30){
+                 gon();
+            time=0;
+            }
+        },100)
+    </script>
+</body>
+</html>

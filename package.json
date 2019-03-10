@@ -1,0 +1,14 @@
+{
+  "name": "rng",
+  "version": "1.0.0",
+  "description": "rng",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rng"
+  ],
+  "author": "王豪",
+  "license": "ISC"
+}
